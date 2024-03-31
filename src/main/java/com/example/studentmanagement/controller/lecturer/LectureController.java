@@ -3,9 +3,9 @@ package com.example.studentmanagement.controller.lecturer;
 import com.example.studentmanagement.model.Lecturer;
 import com.example.studentmanagement.service.LectureService;
 import com.example.studentmanagement.service.LectureServiceImpl;
-import com.example.studentmanagement.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.*;
@@ -15,17 +15,18 @@ import java.util.Optional;
 
 @RestController
 @CrossOrigin
+@RequestMapping("/api/v1")
 public class LectureController {
     @Autowired
     LectureServiceImpl lectureServiceImpl;
     @Autowired
     LectureService lecturerService;
-    @RequestMapping(value = "/lecturer", method = RequestMethod.POST)
+    @RequestMapping(value = "/lecturer", method = RequestMethod.POST, consumes = MediaType.ALL_VALUE)
     public Lecturer save(@RequestBody Lecturer lecturer){
         return lectureServiceImpl.save(lecturer);
     }
 
-    @RequestMapping(value = "/lecturer/{id}", method = RequestMethod.PUT)
+    @RequestMapping(value = "/lecturer/{id}", method = RequestMethod.PUT,consumes = MediaType.ALL_VALUE)
     public ResponseEntity<Lecturer> updateLecturer(@PathVariable int id, @RequestBody Lecturer lecturer) {
         Lecturer updateLecturer = lectureServiceImpl.update(id, lecturer);
         return ResponseEntity.ok(updateLecturer);
