@@ -1,8 +1,7 @@
 package com.example.studentmanagement.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.util.Objects;
 
@@ -10,6 +9,7 @@ import java.util.Objects;
 @Table(name = "students")
 public class Student {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String nic;
     private String name;
@@ -96,8 +96,12 @@ public class Student {
         return password;
     }
 
+    @Transient // This annotation tells JPA to ignore this field when persisting to the database
+    private transient BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+
     public void setPassword(String password) {
-        this.password = password;
+        // Hash the password before setting it
+        this.password = passwordEncoder.encode(password);
     }
 
     private String image;
