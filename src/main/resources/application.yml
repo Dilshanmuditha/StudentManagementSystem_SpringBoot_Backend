@@ -15,3 +15,7 @@ spring:
       naming:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
       ddl-auto:  validate
+
+jwt:
+  secret: 5J@Gp)w8Yn#s@t3F2a%Wd@Qx7*Uk4Hg!
+  expirationMs: 86400000
