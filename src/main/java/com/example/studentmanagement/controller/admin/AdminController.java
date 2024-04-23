@@ -1,10 +1,10 @@
-package com.example.studentmanagement.controller;
+package com.example.studentmanagement.controller.admin;
 
 import com.example.studentmanagement.errorHandling.UniqueError;
 import com.example.studentmanagement.model.Admin;
 import com.example.studentmanagement.security.AuthRequest;
 import com.example.studentmanagement.service.AdminService;
-import com.example.studentmanagement.service.AdminServiceImple;
+import com.example.studentmanagement.service.AdminServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
@@ -21,7 +21,7 @@ import java.util.Optional;
 public class AdminController {
 
     @Autowired
-    AdminServiceImple adminServiceImple;
+    AdminServiceImpl adminServiceImple;
     @Autowired
     AdminService adminService;
 
