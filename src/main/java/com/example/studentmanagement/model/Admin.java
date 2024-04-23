@@ -1,15 +1,27 @@
 package com.example.studentmanagement.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "admins")
 public class Admin {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private String name,email,password,image;
+    private String name;
+    @Column(unique = true)
+    private String email;
+    private String password;
+    private String image;
+    @Column(unique = true)
+    private String mobile_number;
+    public String getMobile_number() {
+        return mobile_number;
+    }
+
+    public void setMobile_number(String mobile_number) {
+        this.mobile_number = mobile_number;
+    }
 
     public int getId() {
         return id;
