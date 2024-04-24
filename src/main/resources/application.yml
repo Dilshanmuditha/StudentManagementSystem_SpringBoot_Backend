@@ -1,3 +1,5 @@
+server:
+  port: 8090
 management:
   endpoints:
     web:
@@ -14,7 +16,7 @@ spring:
     hibernate:
       naming:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
-      ddl-auto:  validate
+      ddl-auto:  create-drop
 
 jwt:
   secret: 5J@Gp)w8Yn#s@t3F2a%Wd@Qx7*Uk4Hg!
