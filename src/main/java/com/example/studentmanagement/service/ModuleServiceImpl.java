@@ -19,15 +19,12 @@ public class ModuleServiceImpl implements ModuleService{
     public Module update(int id, Module newModuleData) {
 
         Module existingModule = moduleRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Lecturer not found with id: " + id));
+                .orElseThrow(() -> new ResourceNotFoundException("Module not found with id: " + id));
 
-        // Update existing student data with new data
+        // Update existing module data with new data
         existingModule.setName(newModuleData.getName());
-        existingModule.setPassword(newModuleData.getPassword());
-        existingModule.setUserName(newModuleData.getUserName());
-        existingModule.setMobile(newModuleData.getMobile());
         existingModule.setCode(newModuleData.getCode());
-        existingModule.setAddress(newModuleData.getAddress());
+        existingModule.setCourse_id(newModuleData.getCourse_id());
 
         return moduleRepository.save(existingModule);
     }

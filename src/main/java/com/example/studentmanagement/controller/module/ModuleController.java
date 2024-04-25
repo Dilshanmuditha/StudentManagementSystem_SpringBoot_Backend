@@ -1,4 +1,4 @@
-package com.example.studentmanagement.controller.Model;
+package com.example.studentmanagement.controller.module;
 
 import com.example.studentmanagement.model.Module;
 import com.example.studentmanagement.service.ModuleService;
