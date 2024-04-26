@@ -4,14 +4,24 @@ import com.example.studentmanagement.model.Module;
 import com.example.studentmanagement.service.ModuleService;
 import com.example.studentmanagement.service.ModuleServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @RestController
 @CrossOrigin
@@ -47,5 +57,11 @@ public class ModuleController {
         } catch (UsernameNotFoundException ex) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
         }
+    }
+
+    @RequestMapping(value = "/module/{id}/materials/upload", method = RequestMethod.PUT, consumes = MediaType.ALL_VALUE)
+    public ResponseEntity<Module> uploadFile(@PathVariable int id,@RequestParam("file") MultipartFile file) {
+        Module uploadFile = moduleServiceImpl.uploadFile(id,file);
+        return ResponseEntity.ok(uploadFile);
     }
 }

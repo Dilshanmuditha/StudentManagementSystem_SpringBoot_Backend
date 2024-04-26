@@ -8,8 +8,10 @@ public class Lecturer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    @Column(unique = true)
     private String nic;
     private String name;
+    @Column(unique = true)
     private String email;
     private String image;
 
@@ -86,7 +88,9 @@ public class Lecturer {
     }
 
     private String address;
+    @Column(unique = true)
     private String mobile;
+    @Column(unique = true)
     private String userName;
     private String password;
 }

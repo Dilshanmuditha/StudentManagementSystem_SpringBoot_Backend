@@ -11,8 +11,10 @@ public class Student {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    @Column(unique = true)
     private String nic;
     private String name;
+    @Column(unique = true)
     private String email;
 
     @Override
@@ -106,7 +108,9 @@ public class Student {
 
     private String image;
     private String address;
+    @Column(unique = true)
     private String mobile;
+    @Column(unique = true)
     private String userName;
     private String password;
 }

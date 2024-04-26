@@ -1,10 +1,12 @@
 package com.example.studentmanagement.controller.student;
 
+import com.example.studentmanagement.errorHandling.UniqueError;
 import com.example.studentmanagement.model.Admin;
 import com.example.studentmanagement.model.Student;
 import com.example.studentmanagement.service.StudentService;
 import com.example.studentmanagement.service.StudentServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -23,8 +25,14 @@ public class StudentController {
     @Autowired
     StudentService studentService;
     @RequestMapping(value = "/student", method = RequestMethod.POST, consumes = MediaType.ALL_VALUE)
-    public Student save(@RequestBody Student student){
-        return studentServiceImpl.save(student);
+    public ResponseEntity<?>  save(@RequestBody Student student){
+        try {
+            Student savedStudent = studentServiceImpl.save(student);
+            return ResponseEntity.ok(savedStudent);
+        } catch (DataIntegrityViolationException ex) {
+            String errorMessage = UniqueError.extractErrorMessage(ex);
+            return ResponseEntity.badRequest().body(errorMessage);
+        }
     }
 
     @RequestMapping(value = "/student/{id}", method = RequestMethod.PUT, consumes = MediaType.ALL_VALUE)
