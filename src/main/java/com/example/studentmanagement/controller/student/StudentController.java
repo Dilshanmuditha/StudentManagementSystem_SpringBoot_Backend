@@ -2,6 +2,7 @@ package com.example.studentmanagement.controller.student;
 
 import com.example.studentmanagement.model.Admin;
 import com.example.studentmanagement.model.Student;
+import com.example.studentmanagement.security.AuthRequest;
 import com.example.studentmanagement.service.StudentService;
 import com.example.studentmanagement.service.StudentServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,5 +50,11 @@ public class StudentController {
         } catch (UsernameNotFoundException ex) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
         }
+    }
+
+    @PostMapping("/student/login")
+    public ResponseEntity<?> login(@RequestBody AuthRequest authRequest) {
+        // Delegate login logic to the service layer
+        return studentServiceImpl.login(authRequest.getUserName(), authRequest.getPassword());
     }
 }
