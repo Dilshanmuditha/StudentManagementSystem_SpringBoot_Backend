@@ -11,6 +11,8 @@ public class Module {
     private String name;
     @Column(nullable = true)
     private String file_path;
+
+    @Column(length = 5000) // Ensure the column length in the database matches the constraint
     private String content;
 
     public String getFile_path() {
