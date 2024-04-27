@@ -41,7 +41,7 @@ public class ModuleController {
         Module updateModule = moduleServiceImpl.update(id, module);
         return ResponseEntity.ok(updateModule);
     }
-    @RequestMapping(value = "/module", method = RequestMethod.GET)
+    @RequestMapping(value = "module", method = RequestMethod.GET)
     public List<Module> getModule(){return moduleServiceImpl.getModule();
     }
 

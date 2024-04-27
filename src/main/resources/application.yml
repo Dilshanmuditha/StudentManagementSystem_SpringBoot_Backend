@@ -16,7 +16,7 @@ spring:
     hibernate:
       naming:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
-      ddl-auto:  create
+      ddl-auto:  validate
   servlet:
     multipart:
       max-file-size: 10MB
