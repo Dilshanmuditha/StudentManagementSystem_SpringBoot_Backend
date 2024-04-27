@@ -12,8 +12,8 @@ public class UniqueError {
             errorMessage = "Admin Mobile number already exists";
         } else if (message.contains("UK_4vlci9iqxv3qny8m1hrwic7gp")) {
             errorMessage = "Lecture email already exists";
-        } else if (message.contains("UK_edb6cpoydnf69qlyhuak3ixwm")) {
-            errorMessage = "Lecture Mobile already exists";
+        } else if (message.contains("UK_y1003ley7ruejgpmif8wb76o")) {
+            errorMessage = "NIC already exists";
         }
         return errorMessage;
     }

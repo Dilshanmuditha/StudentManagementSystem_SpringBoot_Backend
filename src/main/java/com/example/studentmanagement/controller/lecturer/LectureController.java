@@ -60,9 +60,4 @@ public class LectureController {
         }
     }
 
-    @PostMapping("/lecture/login")
-    public ResponseEntity<?> login(@RequestBody AuthRequest authRequest) {
-        // Delegate login logic to the service layer
-        return lectureServiceImpl.login(authRequest.getUserName(), authRequest.getPassword());
-    }
 }

@@ -21,7 +21,7 @@ import java.util.Optional;
 public class AdminController {
 
     @Autowired
-    AdminServiceImpl adminServiceImple;
+    AdminServiceImpl adminServiceImpl;
     @Autowired
     AdminService adminService;
 
@@ -32,12 +32,12 @@ public class AdminController {
 
     @RequestMapping(value = "/admins", method = RequestMethod.GET)
     public List<Admin> getAdmins(){
-        return adminServiceImple.getAdmins();
+        return adminServiceImpl.getAdmins();
     }
     @RequestMapping(value = "/admin", method = RequestMethod.POST)
     public ResponseEntity<?> save(@RequestBody Admin admin){
         try {
-            Admin savedAdmin = adminServiceImple.save(admin);
+            Admin savedAdmin = adminServiceImpl.save(admin);
             return ResponseEntity.ok(savedAdmin);
         } catch (DataIntegrityViolationException ex) {
             String errorMessage = UniqueError.extractErrorMessage(ex);
@@ -47,14 +47,14 @@ public class AdminController {
 
     @RequestMapping(value = "/admin/{id}", method = RequestMethod.PUT)
     public ResponseEntity<Admin> updateAdmin(@PathVariable int id, @RequestBody Admin admin) {
-        Admin updatedAdmin = adminServiceImple.update(id, admin);
+        Admin updatedAdmin = adminServiceImpl.update(id, admin);
         return ResponseEntity.ok(updatedAdmin);
     }
 
     @RequestMapping(value = "/admin/{id}", method = RequestMethod.GET)
     public ResponseEntity<?> viewAdmin(@PathVariable Integer id) {
         try {
-            Optional<Admin> viewAdmin = adminServiceImple.view(id);
+            Optional<Admin> viewAdmin = adminServiceImpl.view(id);
             if (viewAdmin.isPresent()) {
                 return ResponseEntity.ok(viewAdmin.get());
             } else {
@@ -63,11 +63,5 @@ public class AdminController {
         } catch (UsernameNotFoundException ex) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
         }
-    }
-
-    @PostMapping("/login")
-    public ResponseEntity<?> login(@RequestBody AuthRequest authRequest) {
-        // Delegate login logic to the service layer
-        return adminServiceImple.login(authRequest.getEmail(), authRequest.getPassword());
     }
 }

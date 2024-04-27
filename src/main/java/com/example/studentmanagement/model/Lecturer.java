@@ -15,6 +15,13 @@ public class Lecturer {
     private String email;
     private String image;
 
+    private String role;
+    private String address;
+    @Column(unique = true)
+    private String mobile;
+    @Column(unique = true)
+    private String userName;
+    private String password;
     public int getId() {
         return id;
     }
@@ -87,10 +94,11 @@ public class Lecturer {
         this.password = password;
     }
 
-    private String address;
-    @Column(unique = true)
-    private String mobile;
-    @Column(unique = true)
-    private String userName;
-    private String password;
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
 }

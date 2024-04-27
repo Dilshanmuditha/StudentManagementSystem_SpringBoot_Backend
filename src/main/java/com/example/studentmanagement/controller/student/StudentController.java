@@ -60,9 +60,4 @@ public class StudentController {
         }
     }
 
-    @PostMapping("/student/login")
-    public ResponseEntity<?> login(@RequestBody AuthRequest authRequest) {
-        // Delegate login logic to the service layer
-        return studentServiceImpl.login(authRequest.getUserName(), authRequest.getPassword());
-    }
 }
