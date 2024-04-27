@@ -31,15 +31,16 @@ public class Module {
         this.content = content;
     }
 
-    public Long getCourse_id() {
-        return course_id;
+
+    private Long courseId;
+
+    public Long getCourseId() {
+        return courseId;
     }
 
-    public void setCourse_id(Long course_id) {
-        this.course_id = course_id;
+    public void setCourseId(Long courseId) {
+        this.courseId = courseId;
     }
-
-    private Long course_id;
 
     public int getId() {
         return id;
