@@ -1,9 +1,6 @@
 package com.example.studentmanagement.model;
 
 import jakarta.persistence.*;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-
-import java.util.Objects;
 
 @Entity
 @Table(name = "students")
@@ -11,22 +8,21 @@ public class Student {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    @Column(unique = true)
     private String nic;
     private String name;
+    @Column(unique = true)
     private String email;
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Student student = (Student) o;
-        return getId() == student.getId() && Objects.equals(getNic(), student.getNic()) && Objects.equals(getUserName(), student.getUserName()) && Objects.equals(getPassword(), student.getPassword());
-    }
+    private String image;
+    private String address;
+    @Column(unique = true)
+    private String mobile;
+    @Column(unique = true)
+    private String userName;
+    private String password;
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(getPassword());
-    }
+    private String role;
 
     public int getId() {
         return id;
@@ -92,21 +88,19 @@ public class Student {
         this.userName = userName;
     }
 
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
     public String getPassword() {
         return password;
     }
 
-    @Transient // This annotation tells JPA to ignore this field when persisting to the database
-    private transient BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-
     public void setPassword(String password) {
-        // Hash the password before setting it
-        this.password = passwordEncoder.encode(password);
+        this.password = password;
     }
-
-    private String image;
-    private String address;
-    private String mobile;
-    private String userName;
-    private String password;
 }

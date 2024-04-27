@@ -1,6 +1,4 @@
 package com.example.studentmanagement.service;
-import com.example.studentmanagement.model.Admin;
-import com.example.studentmanagement.model.Lecturer;
 import com.example.studentmanagement.model.Student;
 import com.example.studentmanagement.repository.StudentRepository;
 import com.example.studentmanagement.security.JwtTokenService;

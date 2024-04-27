@@ -22,7 +22,7 @@ spring:
       max-file-size: 10MB
       max-request-size: 10MB
 file:
-  upload-dir: /src/main/resources/static
+  upload-dir: files
 
 jwt:
   secret: 5J@Gp)w8Yn#s@t3F2a%Wd@Qx7*Uk4Hg!

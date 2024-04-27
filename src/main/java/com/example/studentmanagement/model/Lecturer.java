@@ -8,11 +8,20 @@ public class Lecturer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    @Column(unique = true)
     private String nic;
     private String name;
+    @Column(unique = true)
     private String email;
     private String image;
 
+    private String role;
+    private String address;
+    @Column(unique = true)
+    private String mobile;
+    @Column(unique = true)
+    private String userName;
+    private String password;
     public int getId() {
         return id;
     }
@@ -85,8 +94,11 @@ public class Lecturer {
         this.password = password;
     }
 
-    private String address;
-    private String mobile;
-    private String userName;
-    private String password;
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
 }
