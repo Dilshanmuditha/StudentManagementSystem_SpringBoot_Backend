@@ -38,7 +38,7 @@ public class ModuleServiceImpl implements ModuleService{
         // Update existing module data with new data
         existingModule.setName(newModuleData.getName());
         existingModule.setCode(newModuleData.getCode());
-        existingModule.setCourse_id(newModuleData.getCourse_id());
+        existingModule.setCourseId(newModuleData.getCourseId());
         existingModule.setContent(newModuleData.getContent());
 
         return moduleRepository.save(existingModule);
@@ -75,5 +75,9 @@ public class ModuleServiceImpl implements ModuleService{
                 .orElseThrow(() -> new ResourceNotFoundException("Module not found with id: " + id));
         existingModule.setFile_path(filePath);
         return moduleRepository.save(existingModule);
+    }
+    @Override
+    public List<Module> getModulesByCourseId(Long courseId) {
+        return moduleRepository.findAllByCourseId(courseId);
     }
 }

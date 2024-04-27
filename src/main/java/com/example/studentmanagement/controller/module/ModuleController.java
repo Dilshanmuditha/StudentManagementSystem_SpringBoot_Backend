@@ -50,10 +50,10 @@ public class ModuleController {
     @RequestMapping(value = "module", method = RequestMethod.GET)
     public List<Module> getModule(){return moduleServiceImpl.getModule();
     }
-//    @RequestMapping(value = "module/course/{courseId}", method = RequestMethod.GET)
-//    public List<Module> getModulesByCourseId(@PathVariable Long courseId) {
-//        return moduleServiceImpl.getModulesByCourseId(courseId);
-//    }
+    @RequestMapping(value = "module/course/{courseId}", method = RequestMethod.GET)
+    public List<Module> getModulesByCourseId(@PathVariable Long courseId) {
+        return moduleServiceImpl.getModulesByCourseId(courseId);
+    }
     @RequestMapping(value = "/module/{id}", method = RequestMethod.GET)
     public ResponseEntity<?> viewModule(@PathVariable Integer id) {
         try {
